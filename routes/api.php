@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\EnsureTokenIsValid;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('tickets', [TicketController::class, 'index']);
+
+Route::get('tickets/{ticket}', [TicketController::class, 'show']);
+
+Route::post('tickets/create', [TicketController::class, 'store']);
+
+Route::put('tickets/{ticket}', [TicketController::class, 'update']);
+
+Route::delete('tickets/{ticket}', [TicketController::class, 'delete']);
+

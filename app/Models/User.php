@@ -3,23 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Lumen\Auth\Authorizable;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class User extends Model
 {
-    use Authenticatable, Authorizable, HasFactory;
+    use Authenticatable, Notifiable, HasFactory;
 
     /**
      * For safety, by default none of the attributes may be mass assignable, with the exception of these attributes.
-     * The attributes 'kiosk' and 'admin' are excluded.
      * @var array
      */
     protected $fillable = [
-        'short', 'color', 'staredtickets'
+        'name', 'short', 'email','color', 'staredtickets'
     ];
 
     /**
@@ -41,7 +38,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string
      */
     protected $table = 'users';
-    protected $primaryKey = 'user';
+    protected $primaryKey = 'id';
 
     /**
      * The primary key shall not be an incrementing integer (@see $fillable 'number'), ...

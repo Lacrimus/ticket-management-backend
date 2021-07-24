@@ -28,7 +28,7 @@ class Ticket extends Model
      * @var string
      */
     protected $table = 'tickets';
-    protected $primaryKey = 'ticket_id';
+    protected $primaryKey = 'id';
 
     /**
      * The primary key shall not be an incrementing integer (@see $fillable 'number'), ...

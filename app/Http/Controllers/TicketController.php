@@ -44,7 +44,17 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        /* TODO input validation via middleware */
+        /* TODO input validation via middleware and validators*/
+        Validator::make($ticket, [
+            'id' => ['required', 'string', 'unique:tickets'],
+            'task' => ['required', 'string', 'unique:tickets', 'max:60'],
+            'tasklong' => ['nullable', 'string', 'max:100'], 
+            'archived' => ['required', 'boolean'],
+            'creationdate' => ['required', 'date_format:d m Y'],
+            'author' => ['required', 'string'],
+            'room' => ['nullable', 'string'],
+            'duedate' => ['required', 'date_format:d m Y', 'after:creationdate']
+        ]);
 
         // Mass assignment option
         $ticket = Ticket::create([
@@ -65,7 +75,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        return $ticket;
     }
 
     /**
@@ -88,7 +98,9 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        $ticket->update($request->all());
+
+        return $ticket;
     }
 
     /**

@@ -20,9 +20,15 @@ class TicketFactory extends Factory
      * @return array
      */
     public function definition()
-    {
+    { 
         return [
-            //
+            'task' => $this->faker->sentence(),
+            'tasklong' => $this->faker->sentence(30),
+            'archived' => random_int(0, 1),
+            'creationdate' => $this->faker->dateTime(),
+            'author' => $this->faker->name(),
+            'room' => $this->faker->randomNumber(4, true),
+            'duedate' => $this->faker->dateTime()
         ];
     }
 }

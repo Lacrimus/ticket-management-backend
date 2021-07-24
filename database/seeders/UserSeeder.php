@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class TicketSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,8 @@ class TicketSeeder extends Seeder
      */
     public function run()
     {
-        //Ticket::truncate();
+        //User::truncate();
 
-        Ticket::factory(10)->create();
+        User::factory(10)->create();
     }
 }
