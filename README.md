@@ -22,6 +22,12 @@ Install dependencies (this gegnerates the missing `/vendors` directory)
 ```sh 
 composer install
 ```
+Generate a `.env` file for your clone of this project by using the example file.
+Have artisan generete a unique key and make sure to **fill in the missing data** in your new config.
+```sh
+cp .env.example .env
+php artisan key:generate
+```
 Optional shell alias for convenience
 ```sh
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
