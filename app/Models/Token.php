@@ -18,6 +18,22 @@ class Token extends Model
     }
 
     /**
+     * @var array
+     */
+    protected $fillable = [
+        'hash', 'user'
+    ];
+
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'plain'
+    ];
+
+    /**
      * Some manual specifications for Eloquent. They mostly match what would be set by the mapper by default
      * but have been hardcoded for clarity and safety.
      */
