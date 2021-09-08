@@ -15,10 +15,21 @@ This is the backend repository for the [ticket management app](https://github.co
 + composer for php dependency management
 
 ## Development
-+ `git clone https://github.com/lsglab/ticket-management-backend`
-+ `composer install` (generates `/vendor` directory)
-+ `alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'` (set a bash alias for convenience)
-+ `sail build && sail up -d` (build the image and run the containers in detatched mode)
+```sh
+git clone https://github.com/lsglab/ticket-management-backend
+```
+Install dependencies (this gegnerates the missing `/vendors` directory)
+```sh 
+composer install
+```
+Optional shell alias for convenience
+```sh
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+```
+Build the image and run the containers in detatched mode
+```
+sail build && sail up -d
+```
 
 ## Deployment
 + Docker image deployed in local network or cloudspace
