@@ -22,13 +22,13 @@ class TicketFactory extends Factory
     public function definition()
     { 
         return [
-            'task' => $this->faker->sentence(),
-            'tasklong' => $this->faker->sentence(30),
+            'task' => $this->faker->sentence(5),
+            'tasklong' => $this->faker->sentence(50),
             'archived' => random_int(0, 1),
             'creationdate' => $this->faker->dateTime(),
+            'duedate' => $this->faker->dateTime(),
             'author' => $this->faker->name(),
-            'room' => $this->faker->randomNumber(4, true),
-            'duedate' => $this->faker->dateTime()
+            'room' => $this->faker->randomNumber(4, true)
         ];
     }
 }

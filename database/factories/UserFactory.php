@@ -22,15 +22,19 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->lastName();
+        $short = preg_replace('#[aeiou\s]+#i', '', $name);
         return [
-            'name' => $this->faker->name(),
-            'short' => str_replace('#[aeiou\s]+#i', '', $this->faker->name()),
+            'name' => $name,
+            'short' => $short,
             'email' => $this->faker->unique()->safeEmail(),
-            'token' => $this->faker->sha256(),
+            // The hash alogithm used is ripemd320
+            'token' => hash_pbkdf2('ripemd320', $this->faker->word(), '18843f5315274a3486770ee56a82d6ae21b','1000', '50', 'true'),
             'color' => $this->faker->hexColor(),
-            'staredtickets' => '' //array_fill(0, random_int(1, 5), $this->faker->sha256()),
-            //'remember_token' => Str::random(10)
+            'staredtickets' => '', //array_fill(0, random_int(1, 5), $this->faker->sha256()),
+            'remember_token' => ''
         ];
+        //Todo: unify token generation (user receives tokens from token table)
     }
 
     /**
