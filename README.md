@@ -9,10 +9,16 @@ This is the backend repository for the [ticket management app](https://github.co
 + Sail (Laravel) Docker environment
 + Sanctum (Laravel) Authentication (built in)
 
-### Development
+### Development Tools
 + git for version control
 + `php artisan` (Laravel CLI) for application building
-+ composer for dependency management
++ composer for php dependency management
+
+## Development
++ `git clone https://github.com/lsglab/ticket-management-backend`
++ `composer install` (generates `/vendor` directory)
++ `alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'` (set a bash alias for convenience)
++ `sail build && sail up -d` (build the image and run the containers in detatched mode)
 
 ## Deployment
 + Docker image deployed in local network or cloudspace
