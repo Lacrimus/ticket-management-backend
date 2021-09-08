@@ -7,6 +7,7 @@ This is the backend repository for the [ticket management app](https://github.co
 ### Framework / Wrapper
 + Laravel PHP Framework for creating a REST API service
 + Sail (Laravel) Docker environment
++ Sanctum (Laravel) Authentication (built in)
 
 ### Development
 + git for version control

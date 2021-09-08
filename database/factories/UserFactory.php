@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'short' => str_replace('#[aeiou\s]+#i', '', $this->faker->name()),
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => $this->faker->sha256(),
+            'token' => $this->faker->sha256(),
             'color' => $this->faker->hexColor(),
             'staredtickets' => '' //array_fill(0, random_int(1, 5), $this->faker->sha256()),
             //'remember_token' => Str::random(10)

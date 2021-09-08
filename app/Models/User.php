@@ -2,14 +2,35 @@
 
 namespace App\Models;
 
+use App\Models\Token;
+
+use Laravel\Sanctum\HasApiTokens;
+
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    use Authenticatable, Notifiable, HasFactory;
+    use Authenticatable, HasApiTokens , Notifiable, HasFactory;
+
+    /**
+     * Eloquent relationship to Ticket.php
+     * @return \Http\Models\Ticket
+     */
+    public function tickets() {
+        return $this->hasMany(Ticket::class);
+    }
+
+    /**
+     * Get the user's token (as it is in the database, not in the current request).
+     * @return \Http\Models\Token
+     */
+    public function token() {
+        return $this->$token;
+    }
 
     /**
      * For safety, by default none of the attributes may be mass assignable, with the exception of these attributes.
@@ -25,7 +46,7 @@ class User extends Model
      * @var array
      */
     protected $hidden = [
-        '',
+        'token'
     ];
 
     /**
@@ -34,10 +55,24 @@ class User extends Model
      */
 
     /**
+     * Database connection type
+     * 
+     * @var string
+     */
+    protected $connection = 'mysql';
+
+    /**
+     * Database table for the model
      * 
      * @var string
      */
     protected $table = 'users';
+
+    /**
+     * Database primary key
+     * 
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**

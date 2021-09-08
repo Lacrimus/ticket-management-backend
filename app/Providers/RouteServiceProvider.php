@@ -35,7 +35,20 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->configureRateLimiting();
+        $this->configureRateLimiting(function()
+        {
+            RateLimiter::for('global', function (Request $request) {
+                return Limit::perMinute(100)->response(function() {
+                    return response('Request limit exceded', 429);
+                });
+            });
+
+            RateLimiter::for('uploads', function (Request $request) {
+                return Limit::perMinute(10)->response(function() {
+                    return response('Request limit for uploads exceded', 429);
+                });;
+            });
+        });
 
         $this->routes(function () {
             Route::prefix('api')
@@ -47,6 +60,11 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+
+        # Apply the route constraints globally
+        Route::pattern('id', '[A-Za-z0-9]+');
+        Route::pattern('creationdate', 'duedate','[0-9]+');
+        Route::pattern('task', 'author', '[A-Za-z]+');
     }
 
     /**

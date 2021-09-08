@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Routing\Controller;
 
 class UserController extends Controller
 {
@@ -22,11 +23,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return User::limit(100)->get();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -73,7 +74,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return $user;
     }
 
     /**

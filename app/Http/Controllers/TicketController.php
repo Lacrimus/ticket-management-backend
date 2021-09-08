@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Routing\Controller;
 
 class TicketController extends Controller
 {
@@ -18,16 +20,23 @@ class TicketController extends Controller
     }
     /**
      * Display a listing of the resource.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        /** 
+         * Notice: This is limited to users with elevated access because the amount of data requested 
+         * will grow very large with more and more tickets added.
+         */
+        $request->user()->tokenCan('tickets:requestAll');
+
+
+        return Ticket::all();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new ticket.
      *
      * @return \Illuminate\Http\Response
      */
