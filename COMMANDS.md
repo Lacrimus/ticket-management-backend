@@ -17,3 +17,6 @@ Debugging commands:
 
 `docker volume prune --filter filter` Remove unused volumes
 `docker system prune --volume volume` Remove unused volume data
+
+`./vendor/bin/phpunit` Unit test routine
+`php artisan test` Feature test routine

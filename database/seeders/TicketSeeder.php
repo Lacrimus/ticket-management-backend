@@ -14,8 +14,6 @@ class TicketSeeder extends Seeder
      */
     public function run()
     {
-        //Ticket::truncate();
-
         Ticket::factory(10)->create();
     }
 }
