@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'short' => $short,
             'email' => $this->faker->unique()->safeEmail(),
             // The hash alogithm used is ripemd320
-            'token' => hash_pbkdf2('ripemd320', $this->faker->word(), '18843f5315274a3486770ee56a82d6ae21b','1000', '50', 'true'),
+            'token' => hash_pbkdf2('ripemd320', $this->faker->word(), $this->faker->sha256(),'1000', '50', false),
             'color' => $this->faker->hexColor(),
             'staredtickets' => '', //array_fill(0, random_int(1, 5), $this->faker->sha256()),
             'remember_token' => ''

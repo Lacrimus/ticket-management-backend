@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('token');
             // Temporary session token (not the initial token)
             $table->rememberToken();
-            $table->string('color', 6);
+            $table->string('color', 7);
             $table->string('staredtickets');
             $table->timestamps();
         });

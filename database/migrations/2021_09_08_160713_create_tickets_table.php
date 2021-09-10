@@ -15,8 +15,8 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('task', 10);
-            $table->string('tasklong', 100);
+            $table->string('task');
+            $table->string('tasklong');
             $table->integer('archived');
             $table->dateTime('creationdate');
             $table->dateTime('duedate');

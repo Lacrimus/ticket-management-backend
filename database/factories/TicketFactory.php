@@ -23,7 +23,7 @@ class TicketFactory extends Factory
     { 
         return [
             'task' => $this->faker->sentence(5),
-            'tasklong' => $this->faker->sentence(50),
+            'tasklong' => $this->faker->sentence(15),
             'archived' => random_int(0, 1),
             'creationdate' => $this->faker->dateTime(),
             'duedate' => $this->faker->dateTime(),

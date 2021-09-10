@@ -23,8 +23,8 @@ class TokenController extends Controller
      */
     public function receive()
     {
-        /**   @todo !!!!!!!!!!!!!!!!!!!!
-         *   @todo Implement actual datbase access, the code below is just a scheme and will not work
+        /**
+         *   Todo: Implement actual datbase access, the code below is just a scheme and will not work
         **/
         $current = $request->user()->currentAccessToken();
         $user = $request->user();
