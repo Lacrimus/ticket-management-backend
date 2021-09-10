@@ -18,8 +18,8 @@ class TicketTest extends TestCase
      * @return void
      */
     function __construct() {
-        $dummyTicket = Ticket::factory()->create();
-        $manyDummyTickets = Ticket::factory()->count(random_int(3, 5))->create();
+        #$dummyTicket = Ticket::factory()->create();
+        #$manyDummyTickets = Ticket::factory()->count(random_int(3, 5))->create();
     }
 
     /**
