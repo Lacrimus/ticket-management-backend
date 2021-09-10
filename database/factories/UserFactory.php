@@ -34,19 +34,19 @@ class UserFactory extends Factory
             'staredtickets' => '', //array_fill(0, random_int(1, 5), $this->faker->sha256()),
             'remember_token' => ''
         ];
-        //Todo: unify token generation (user receives tokens from token table)
+        //Todo: unify token generation (user receives tokens from token table after redeeming intial token)
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * The user's state before the initial token has been sent to claim the user token.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function unverified()
+    public function initial()
     {
         return $this->state(function (array $attributes) {
             return [
-                'email_verified_at' => null,
+                'token' => null,
             ];
         });
     }

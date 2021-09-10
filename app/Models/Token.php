@@ -21,7 +21,7 @@ class Token extends Model
      * @var array
      */
     protected $fillable = [
-        'hash', 'user'
+        'hash', 'user', 'type'
     ];
 
     /**
