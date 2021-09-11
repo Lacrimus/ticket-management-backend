@@ -21,10 +21,11 @@ class TokenFactory extends Factory
      */
     public function definition()
     {
+        $plain = hash_pbkdf2('ripemd320', $this->faker->word(),  $this->faker->sha256(),'1000', '50', 'true');
         return [
-            'plain' => hash_pbkdf2('ripemd320', $this->faker->word(),  $this->faker->sha256(),'1000', '50', 'true'),
+            'plain' => $plain,
             // Hash the token for safe transit to the client device
-            'hash' => hash_pbkdf2('ripemd320', $this->plain, $this->faker->sha256(),'1000', '50', false),
+            'hash' => hash_pbkdf2('ripemd320', $plain, $this->faker->sha256(),'1000', '50', false),
             'type' => function () {
                 if(rand(0, 1)) {
                         return 'initial';

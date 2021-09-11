@@ -3,25 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\Ticket;
+use Database\Seeders\TicketSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TicketTest extends TestCase
-{   
-    private $dummyTicket;
-    private $manyDummyTickets;
-
-    /**
-     * Constructor to generate some dummy tickets for testing.
-     *
-     * @return void
-     */
-    function __construct() {
-        $dummyTicket = Ticket::factory()->make();
-        $manyDummyTickets = Ticket::factory()->count(random_int(3, 5))->make();
-    }
-
+{       
     /**
      * Normal operation checks
      */
@@ -68,6 +56,7 @@ class TicketTest extends TestCase
      * @return void
      */
     public function test_storeOne() {
+        $dummyTicket = Ticket::factory()->make();
         $response = $this->postJson('/tickets/create', $dummyTicket);
         $response->assertStatus(201);
     }
