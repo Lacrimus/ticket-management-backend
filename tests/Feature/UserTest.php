@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {        
+    use RefreshDatabase;
     /**
      * 
      * @return void

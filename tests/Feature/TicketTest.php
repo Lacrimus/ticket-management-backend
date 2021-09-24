@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class TicketTest extends TestCase
 {       
+    use RefreshDatabase;
     /**
      * Normal operation checks
      */
@@ -57,6 +58,7 @@ class TicketTest extends TestCase
      */
     public function test_storeOne() {
         $dummyTicket = Ticket::factory()->make();
+        $dummyTicket = json_decode(json_encode($dummyTicket), true);
         $response = $this->postJson('/tickets/create', $dummyTicket);
         $response->assertStatus(201);
     }
@@ -67,7 +69,10 @@ class TicketTest extends TestCase
      * @return void
      */
     public function test_overwriteOne() {
-
+        $dummyTicket = Ticket::factory()->make();
+        $dummyTicket = json_decode(json_encode($dummyTicket), true);
+        //$response = $this->putJson('/tickets/{ticket}', $dummyTicket);
+        //$response->assertStatus(201);
     }
 
     /**

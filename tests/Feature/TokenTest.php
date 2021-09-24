@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class TokenTest extends TestCase
 {    
+    use RefreshDatabase;
     /**
      * 
      * @return void
