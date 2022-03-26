@@ -18,6 +18,7 @@ class User extends Model
 
     /**
      * Eloquent relationship to Ticket.php
+     * A user may have none, one or many tickets associated with them.
      * @return \Http\Models\Ticket
      */
     public function tickets() {
@@ -37,7 +38,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'short', 'email','color', 'staredtickets'
+        'name', 'mail','color', 'markedTickets'
     ];
 
     /**
@@ -56,35 +57,35 @@ class User extends Model
 
     /**
      * Database connection type
-     * 
+     *
      * @var string
      */
     protected $connection = 'mysql';
 
     /**
      * Database table for the model
-     * 
+     *
      * @var string
      */
     protected $table = 'users';
 
     /**
      * Database primary key
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
      * The primary key shall not be an incrementing integer (@see $fillable 'number'), ...
-     * 
+     *
      * @var bool
      */
     public $incrementing = false;
 
     /**
      * ... but rather a hash which is generated out of the registration date, the current time and a random integer).
-     * 
+     *
      * @var string
      */
     protected $keyType = 'string';

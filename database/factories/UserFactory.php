@@ -8,11 +8,6 @@ use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = User::class;
 
     /**
@@ -23,16 +18,13 @@ class UserFactory extends Factory
     public function definition()
     {
         $name = $this->faker->lastName();
-        $short = preg_replace('#[aeiou\s]+#i', '', $name);
         return [
             'name' => $name,
-            'short' => $short,
-            'email' => $this->faker->unique()->safeEmail(),
+            'mail' => $this->faker->unique()->safeEmail(),
             // The hash alogithm used is ripemd320
             'token' => hash_pbkdf2('ripemd320', $this->faker->word(), $this->faker->sha256(),'1000', '50', false),
             'color' => $this->faker->hexColor(),
-            'staredtickets' => '', //array_fill(0, random_int(1, 5), $this->faker->sha256()),
-            'remember_token' => ''
+            'markedTickets' => '',
         ];
         //Todo: unify token generation (user receives tokens from token table after redeeming intial token)
     }

@@ -10,7 +10,17 @@ class Ticket extends Model
     use HasFactory;
 
     /**
+     * Eloquent relationship to Step.php
+     * A ticket may have zero, one or more steps
+     * @return \Http\Models\Step
+     */
+    public function steps() {
+        return $this->hasMany(Step::class);
+    }
+
+    /**
      * Eloquent relationship to User.php
+     * Tickets are always created by and bound to a user.
      * @return \Http\Models\Ticket
      */
     public function user() {
@@ -23,7 +33,7 @@ class Ticket extends Model
      * @var array
      */
     protected $fillable = [
-        'task', 'tasklong', 'archived', 'creationdate', 'author', 'room', 'duedate'
+        'task', 'description', 'steps', 'done', 'archived', 'creationdate', 'room', 'dueDate'
     ];
 
     /**
@@ -33,35 +43,35 @@ class Ticket extends Model
 
     /**
      * Database connection type
-     * 
+     *
      * @var string
      */
     protected $connection = 'mysql';
 
     /**
      * Database table for the model
-     * 
+     *
      * @var string
      */
     protected $table = 'tickets';
 
     /**
      * Database primary key
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
      * The primary key shall not be an incrementing integer (@see $fillable 'number'), ...
-     * 
+     *
      * @var bool
      */
     public $incrementing = false;
 
     /**
-     * ... but rather a hash (which in turn is generated out of the creation date, current time, author and a random integer).
-     * 
+     * ... but rather a hash (which in turn is generated during ticket creation).
+     *
      * @var string
      */
     protected $keyType = 'string';

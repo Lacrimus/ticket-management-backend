@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TicketTest extends TestCase
-{       
+{
     use RefreshDatabase;
     /**
      * Normal operation checks
@@ -26,7 +26,7 @@ class TicketTest extends TestCase
 
     /**
      * Requests the three to five most recent tickets.
-     * 
+     *
      * @return void
      */
     public function test_fetchMany() {
@@ -35,7 +35,7 @@ class TicketTest extends TestCase
 
     /**
      * Requests a random ticket.
-     * 
+     *
      * @return void
      */
     public function test_requestOneRandom() {
@@ -44,7 +44,7 @@ class TicketTest extends TestCase
 
     /**
      * Requests all tickets. This should not be possible without elevated permissions.
-     *      
+     *
      * @return void
      */
     public function test_requestAll() {
@@ -53,7 +53,7 @@ class TicketTest extends TestCase
 
     /**
      * Tries to store a newly genereted ticket.
-     * 
+     *
      * @return void
      */
     public function test_storeOne() {
@@ -65,7 +65,7 @@ class TicketTest extends TestCase
 
     /**
      * Triest to overwrite a given ticket with a different one.
-     * 
+     *
      * @return void
      */
     public function test_overwriteOne() {
@@ -77,7 +77,7 @@ class TicketTest extends TestCase
 
     /**
      * Tries to delete a given ticket.
-     * 
+     *
      * @return void
      */
     public function test_removeOne() {
@@ -90,7 +90,7 @@ class TicketTest extends TestCase
 
     /**
      * Checks if fetching is possible with a malformed HTTP header.
-     * 
+     *
      * @return void
      */
     public function test_fetchWrongHeader() {
@@ -99,7 +99,7 @@ class TicketTest extends TestCase
 
     /**
      * Checks if fetching is possible with no / bad input data.
-     * 
+     *
      * @return void
      */
     public function test_fetchBadData() {

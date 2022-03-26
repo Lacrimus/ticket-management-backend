@@ -7,11 +7,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TicketFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = Ticket::class;
 
     /**
@@ -20,15 +15,18 @@ class TicketFactory extends Factory
      * @return array
      */
     public function definition()
-    { 
+    {
         return [
             'task' => $this->faker->sentence(5),
-            'tasklong' => $this->faker->sentence(15),
+            'description' => $this->faker->sentence(15),
+            'steps' => Step::factory()->make(rand(0, 6)),
+            'done' => random_int(0, 1),
             'archived' => random_int(0, 1),
-            'creationdate' => $this->faker->dateTime(),
-            'duedate' => $this->faker->dateTime(),
+            'creationDate' => $this->faker->dateTime(),
             'author' => $this->faker->name(),
-            'room' => $this->faker->randomNumber(4, true)
+            'room' => $this->faker->randomNumber(4, true),
+            'dueDate' => $this->faker->dateTime()
+
         ];
     }
 }

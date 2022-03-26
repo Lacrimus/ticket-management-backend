@@ -1,8 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "setup" :"docker run --rm -v $(pwd):/opt -w /opt laravelsail/php80-composer:latest ; composer install --ignore-platform-reqs",
-        "dev": "npm run development"
+        "setup": "docker run --rm -v $(pwd):/opt -w /opt laravelsail/php80-composer:latest ; composer install --ignore-platform-reqs"
     },
     "devDependencies": {
         "axios": "^0.21",
