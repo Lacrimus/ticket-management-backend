@@ -11,7 +11,7 @@ class TicketController extends Controller
 {
     /**
      * Create a new TicketController instance.
-     * 
+     *
      * @return void
      */
     public function __construct()
@@ -25,8 +25,8 @@ class TicketController extends Controller
      */
     public function index(Request $request)
     {
-        /** 
-         * Notice: This is limited to users with elevated access because the amount of data requested 
+        /**
+         * Notice: This is limited to users with elevated access because the amount of data requested
          * will grow very large with more and more tickets added.
          */
         $request->user()->tokenCan('tickets:requestAll');
@@ -57,7 +57,7 @@ class TicketController extends Controller
         Validator::make($ticket, [
             'id' => ['required', 'string', 'unique:tickets'],
             'task' => ['required', 'string', 'unique:tickets', 'max:60'],
-            'tasklong' => ['nullable', 'string', 'max:100'], 
+            'description' => ['nullable', 'string', 'max:100'],
             'archived' => ['required', 'boolean'],
             'creationdate' => ['required', 'date_format:d m Y'],
             'author' => ['required', 'string'],

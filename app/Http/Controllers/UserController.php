@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     /**
      * Create a new UserController instance.
-     * 
+     *
      * @return void
      */
     public function __construct()
@@ -49,10 +49,9 @@ class UserController extends Controller
         Validator::make($ticket, [
             'id' => ['required', 'string', 'unique:users'],
             'name' => ['required', 'string', 'max:20'],
-            'short' => ['required', 'string', 'max:8'], 
-            'email' => ['required', 'email', 'unique:users'],
+            'mail' => ['required', 'mail', 'unique:users'],
             'color' => ['required', 'string'],
-            'staredtickets' => ['required', 'array']
+            'markedtickets' => ['required', 'array']
         ]);
 
         // Mass assignment option

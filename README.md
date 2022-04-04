@@ -9,6 +9,10 @@ This is the backend repository for the [ticket management app](https://github.co
 + Sail (Laravel) Docker environment
 + Sanctum (Laravel) Authentication (built in)
 
+## Future
+
++ Laravel Passport + OAuth 2.0
+
 ### Development Tools
 + git for version control
 + `php artisan` (Laravel CLI) for application building
